@@ -7,18 +7,15 @@ using namespace seqan3;
 TEST( align_config_test, default_ctr )
 {
     align_config config{};
+
     EXPECT_EQ( config.algorithm, align_enum::dynamic_config );
 }
 
 TEST( align_config_test, copy_ctr )
 {
-    size_t band_start = 5;
-    size_t band_end = 10;
-    align_config config{align_enum::local, band_start, band_end};
+    align_config config{align_enum::local};
 
     EXPECT_EQ( config.algorithm, align_enum::local );
-    EXPECT_EQ( config.band_start, 5 );
-    EXPECT_EQ( config.band_end, 10 );
 }
 
 // ... move constructor, assignment
@@ -32,23 +29,16 @@ TEST( align_config_test, templated_default_ctr )
 
 TEST( align_config_test, templated_copy_ctr )
 {
-    size_t band_start = 5;
-    size_t band_end = 10;
-    align_config<align_enum::local> config{band_start, band_end};
+    align_config<align_enum::local> config{};
 
     EXPECT_EQ( config.algorithm, align_enum::local );
-    EXPECT_EQ( config.band_start, 5 );
-    EXPECT_EQ( config.band_end, 10 );
 }
 
 TEST( align_config_test, assign_band )
 {
     align_config config{};
-    config.band_start = 5;
-    config.band_end = 10;
 
-    EXPECT_EQ( config.band_start, 5 );
-    EXPECT_EQ( config.band_end, 10 );
+    // TODO: test assign band
 }
 
 TEST( align_config_test, config_not_at_compile_time )

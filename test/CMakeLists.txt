@@ -30,3 +30,4 @@ include_directories("${GOOGLETEST_PATH}/include/")
 include_directories("../include")
 
 add_subdirectory(align)
+add_subdirectory(basic)

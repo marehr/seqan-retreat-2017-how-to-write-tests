@@ -24,12 +24,15 @@ struct align_config<align_enum::dynamic_config> : align_config_runtime {
 
     align_config() = default;
     align_config(align_enum algorithm) : algorithm{algorithm}{}
+    align_config(align_enum algorithm, size_t band_start, size_t band_end) :
+        align_config_runtime{band_start, band_end}, algorithm{algorithm}{}
 
     constexpr bool at_compile_time() {
         return false;
     }
 };
 
+align_config(align_enum, size_t, size_t) -> align_config<align_enum::dynamic_config>;
 align_config(align_enum) -> align_config<align_enum::dynamic_config>;
 align_config() -> align_config<align_enum::dynamic_config>;
 

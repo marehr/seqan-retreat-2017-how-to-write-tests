@@ -15,7 +15,7 @@ ExternalProject_Add(googletest
     PREFIX googletest
     GIT_REPOSITORY "https://github.com/google/googletest.git"
     SOURCE_DIR "${CMAKE_SOURCE_DIR}/../vendor/googletest"
-    CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${PROJECT_BINARY_DIR}" "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+    CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${PROJECT_BINARY_DIR};-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
 )
 
 add_library (gtest_main STATIC IMPORTED)
